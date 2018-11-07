@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">GaiaViewer</string>
+    <string name="main_greeting">Hello %s!</string>
+    <!--validation error messages-->
+    <string name="err_validation_username_required">Username is required</string>
+    <string name="err_validation_password_required">Password is required</string>
+    <string name="err_validation_firstname_required">First name is required</string>
+    <string name="err_validation_lastname_required">Last name is required</string>
+    <string name="err_validation_email_not_valid">Not a valid email address</string>
+    <string name="err_validation_email_required">Email is required</string>
+    <string name="err_validation_password_not_match">Passwords do not match</string>
+    <string name="err_validation_password_not_strong">Weak Password</string>
+    <string name="err_validation_repeat_password_required">Repeat Password is required</string>
+    <string name="err_validation_gear_number" formatted="false">Gear %d - Ratio is not a valid number</string>
+    <string name="err_validation_gear_required" formatted="false">Gear %d - Ratio is required</string>
+    <string name="err_validation_tyreSize_required">Tyre diameter is required</string>
+    <!-- Strings related to sign-in -->
+    <string name="prompt_login">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_forgot_password">Forgot password?</string>
+    <string name="action_create_account">I don\'t have an account</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_login">This username is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_logout_failed">Logout failed. Please try again!!</string>
+    <string name="disclaimer_terms_privacy_login">By using the application, you are agreeing to our \n%1$s and %2$s</string>
+
+</resources>

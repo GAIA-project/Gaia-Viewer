@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "viewer.android.gaiaproject.eu.gaiaviewer"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/spring.factories'
+        exclude 'META-INF/spring.schemas'
+        exclude 'META-INF/spring.tooling'
+        exclude 'META-INF/spring.handlers'
+        exclude 'META-INF/spring-configuration-metadata.json'
+        exclude 'META-INF/spring-autoconfigure-metadata.properties'
+        exclude 'META-INF/additional-spring-configuration-metadata.json'
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'changelog.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    dataBinding {
+        enabled true
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //android
+    implementation 'com.android.support:appcompat-v7:28.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.annotation:annotation:1.0.0'
+
+    annotationProcessor "org.androidannotations:androidannotations:4.5.2"
+    implementation "org.androidannotations:androidannotations-api:4.5.2"
+
+    //easyprefs
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.9.7'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.7'
+    implementation 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
+    compileOnly 'org.projectlombok:lombok:1.16.18'
+
+    // sparks
+    implementation('net.sparkworks.cargo:cargo-common:1.0.0-SNAPSHOT') {
+        exclude group: 'org.projectlombok', module: 'lombok'
+    }
+}

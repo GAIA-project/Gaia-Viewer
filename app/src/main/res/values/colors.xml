@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3d3e42</color>
+    <color name="colorPrimaryDark">#2b2c2e</color>
+    <color name="colorAccent">#6f7893</color>
+    <color name="colorAccent2">#f26e1c</color>
+    <color name="colorSecondaryDark">#0c0d0d</color>
+    <color name="colorWhite">#ffffff</color>
+
+    <color name="edittextUnderlineColor">#428bca</color>
+    <color name="textColorLight">#c3c3c3</color>
+    <color name="colorSubmitButton">#2f3032</color>
+    <color name="colorButtonDanger">#ba3624</color>
+
+    <!-- UPAT colors -->
+
+    <color name="textColorDisabled">#505050</color>
+
+    <color name="shadow">#66000000</color>
+    <color name="scrim">#BB000000</color>
+    <color name="button_background">#2f3032</color>
+    <color name="button_text">#c3c3c3</color>
+
+    <color name="engine_card">#678be0</color>
+    <color name="accessories_card">#e4a078</color>
+    <color name="driving_card">#cd67e0</color>
+    <color name="maintenance_card">#94e067</color>
+
+    <color name="hudWidgetsStatic1">#4D4D4D</color>
+    <color name="hudWidgetsLabel">#FFFFFF</color>
+    <color name="hudWidgetsDynamic1">#B2B2B2</color>
+    <color name="hudWidgetsDynamic2">#0451DF</color>
+    <color name="hudWidgetsDynamic3">#FFFFFF</color>
+    <color name="hudWidgetsDynamic4">#FF0000</color>
+    <color name="hudWidgetsDynamic5">#A80000</color>
+    <color name="hudWidgetsDynamic6">#00FF00</color>
+    <color name="hudWidgetsDynamic7">#00A800</color>
+    <color name="hudWidgetsDynamic8">#CEA227</color>
+    <color name="hudWidgetsDynamic9">#C80E0E</color>
+    <color name="hudWidgetsDynamic10">#5C9948</color>
+
+
+    <!-- Review Route Colors-->
+
+    <color name="ecoscore_high_outline">#db016b01</color>
+    <color name="ecoscore_high_inline">#00ff00</color>
+    <color name="ecoscore_medium_high_outline">#af789600</color>
+    <color name="ecoscore_medium_high_inline">#ccff00</color>
+    <color name="ecoscore_medium_low_outline">#d8bf8900</color>
+    <color name="ecoscore_medium_low_inline">#ffb700</color>
+    <color name="ecoscore_low_outline">#d8bf0600</color>
+    <color name="ecoscore_low_inline">#ff0800</color>
+
+
+</resources>
