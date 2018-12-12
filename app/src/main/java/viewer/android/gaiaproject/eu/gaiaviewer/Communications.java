@@ -4,7 +4,12 @@ import android.util.Log;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pixplicity.easyprefs.library.Prefs;
-import net.sparkworks.cargo.common.dto.GroupDTO;
+
+
+import net.sparkworks.cargo.common.dto.PhenomenonDTO;
+import net.sparkworks.cargo.common.dto.UnitDTO;
+import net.sparkworks.cargo.common.dto.data.LatestDTO;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +25,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAACheckTokenResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAAProfileResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAccessTokenResponse;
+import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.GroupDTO;
+import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedInputStream;
@@ -30,8 +37,13 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.UUID;
 
 import static net.sparkworks.cargo.common.CargoRoutes.GROUP;
+import static net.sparkworks.cargo.common.CargoRoutes.GROUP_RESOURCES;
+import static net.sparkworks.cargo.common.CargoRoutes.PHENOMENON;
+import static net.sparkworks.cargo.common.CargoRoutes.RESOURCE_LATEST_BY_UUID;
+import static net.sparkworks.cargo.common.CargoRoutes.UNIT;
 import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.ACCOUNTS_PREF_NAME;
 
 public class Communications {
@@ -201,6 +213,44 @@ public class Communications {
         }
         return headers;
     }
-    
-    
+
+
+    public Collection<ResourceDTO> getResourcesOfGroup(UUID uuid) {
+        HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
+        ResponseEntity<Collection<ResourceDTO>> response = restClient.
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL+ GROUP_RESOURCES).buildAndExpand(uuid).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<ResourceDTO>>() {
+                });
+        if (!response.getStatusCode().is2xxSuccessful())
+            throw new RestClientException(response.toString());
+        return response.getBody();
+    }
+
+    public Collection<PhenomenonDTO> listPhenomena() {
+        HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
+        ResponseEntity<Collection<PhenomenonDTO>> response = restClient.
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + PHENOMENON).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<PhenomenonDTO>>() {
+                });
+        if (!response.getStatusCode().is2xxSuccessful())
+            throw new RestClientException(response.toString());
+        return response.getBody();
+    }
+
+    public Collection<UnitDTO> listUnits() {
+        HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
+        ResponseEntity<Collection<UnitDTO>> response = restClient.
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + UNIT).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<UnitDTO>>() {
+                });
+        if (!response.getStatusCode().is2xxSuccessful())
+            throw new RestClientException(response.toString());
+        return response.getBody();
+    }
+
+    public LatestDTO getResourceLatestValue(UUID uuid) {
+        HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
+        ResponseEntity<LatestDTO> response = restClient.
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + RESOURCE_LATEST_BY_UUID).buildAndExpand(uuid.toString()).toUriString(), HttpMethod.GET, httpEntity, LatestDTO.class);
+        if (!response.getStatusCode().is2xxSuccessful())
+            throw new RestClientException(response.toString());
+        return response.getBody();
+    }
 }

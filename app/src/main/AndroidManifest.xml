@@ -41,6 +41,8 @@
 
         <activity android:name=".MainActivity_">
         </activity>
+        <activity android:name=".SchoolActivity_">
+        </activity>
 
         <!--<provider-->
                 <!--android:name=".util.GenericFileProvider"-->
