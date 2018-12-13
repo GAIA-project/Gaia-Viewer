@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import viewer.android.gaiaproject.eu.gaiaviewer.activity.SchoolActivity;
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 
 public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements View.OnClickListener {

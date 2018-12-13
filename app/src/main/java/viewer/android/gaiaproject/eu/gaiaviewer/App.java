@@ -5,7 +5,7 @@ import android.content.ContextWrapper;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import androidx.multidex.MultiDexApplication;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.SHRD_PREF_SERVICES_NAME;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.SHRD_PREF_SERVICES_NAME;
 
 public class App extends MultiDexApplication {
 

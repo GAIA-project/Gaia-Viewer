@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.util;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.Locale;
+
+import viewer.android.gaiaproject.eu.gaiaviewer.App;
 
 public class ServiceUtils {
 

@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.activity;
 
 
 import android.Manifest;
@@ -12,19 +12,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.pixplicity.easyprefs.library.Prefs;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+
+import viewer.android.gaiaproject.eu.gaiaviewer.R;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAccessTokenResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.task.AsyncLoginTask;
+import viewer.android.gaiaproject.eu.gaiaviewer.util.Communications;
+import viewer.android.gaiaproject.eu.gaiaviewer.util.ServiceUtils;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.ACCOUNTS_PREF_NAME;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.CODE;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.RESYNC_DATA_ACTION;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.USER;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.ACCOUNTS_PREF_NAME;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.CODE;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.RESYNC_DATA_ACTION;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.USER;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {

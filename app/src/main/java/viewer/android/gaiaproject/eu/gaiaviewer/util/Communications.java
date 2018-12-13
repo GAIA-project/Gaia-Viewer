@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.util;
 
 import android.util.Log;
 
@@ -48,7 +48,7 @@ import static net.sparkworks.cargo.common.CargoRoutes.GROUP_SUBGROUPS;
 import static net.sparkworks.cargo.common.CargoRoutes.PHENOMENON;
 import static net.sparkworks.cargo.common.CargoRoutes.RESOURCE_LATEST_BY_UUID;
 import static net.sparkworks.cargo.common.CargoRoutes.UNIT;
-import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.ACCOUNTS_PREF_NAME;
+import static viewer.android.gaiaproject.eu.gaiaviewer.util.Constants.ACCOUNTS_PREF_NAME;
 
 public class Communications {
     private static final String TAG = "Communications";

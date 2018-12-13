@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +20,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import viewer.android.gaiaproject.eu.gaiaviewer.R;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAAProfileResponse;
+import viewer.android.gaiaproject.eu.gaiaviewer.adapter.SchoolListAdapter;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.GroupDTO;
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
+import viewer.android.gaiaproject.eu.gaiaviewer.util.Communications;
 
-import static viewer.android.gaiaproject.eu.gaiaviewer.SchoolActivity.SCHOOL_EXTRA;
+import static viewer.android.gaiaproject.eu.gaiaviewer.activity.SchoolActivity.SCHOOL_EXTRA;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {

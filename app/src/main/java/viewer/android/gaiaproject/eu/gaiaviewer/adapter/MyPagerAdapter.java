@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.adapter;
 
 
 import android.support.v4.app.Fragment;
@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.Collection;
 
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 import viewer.android.gaiaproject.eu.gaiaviewer.fragment.RoomsFragment;
 import viewer.android.gaiaproject.eu.gaiaviewer.fragment.RoomsFragment_;

@@ -1,4 +1,4 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SchoolListAdapter extends ArrayAdapter<SchoolModel> implements View.OnClickListener{
+import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
+
+public class RoomsListAdapter extends ArrayAdapter<SchoolModel> implements View.OnClickListener {
 
     private List<SchoolModel> dataSet;
     Context mContext;
@@ -18,32 +20,28 @@ public class SchoolListAdapter extends ArrayAdapter<SchoolModel> implements View
     // View lookup cache
     private static class ViewHolder {
         TextView txtName;
+        TextView txtTitle;
     }
 
-    public SchoolListAdapter(List<SchoolModel> data, Context context) {
-        super(context, R.layout.school_item, data);
+    public RoomsListAdapter(List<SchoolModel> data, Context context) {
+        super(context, R.layout.room_item, data);
         this.dataSet = data;
-        this.mContext=context;
+        this.mContext = context;
 
     }
 
     @Override
     public void onClick(View v) {
 
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        SchoolModel dataModel=(SchoolModel)object;
+        int position = (Integer) v.getTag();
+        Object object = getItem(position);
+        SchoolModel dataModel = (SchoolModel) object;
 
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.name:
-//                Snackbar.make(v, "Release date " +dataModel.getName(), Snackbar.LENGTH_LONG)
-//                        .setAction("No action", null).show();
                 break;
         }
     }
-
-    private int lastPosition = -1;
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -55,20 +53,24 @@ public class SchoolListAdapter extends ArrayAdapter<SchoolModel> implements View
         final View result;
 
         if (convertView == null) {
+
             viewHolder = new ViewHolder();
-            final LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.school_item, parent, false);
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.room_item, parent, false);
             viewHolder.txtName = convertView.findViewById(R.id.name);
-            result=convertView;
+            viewHolder.txtTitle = convertView.findViewById(R.id.title);
+            result = convertView;
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
+            result = convertView;
         }
 
-        lastPosition = position;
-
+        int lastPosition = position;
         viewHolder.txtName.setText(dataModel.getName());
+        viewHolder.txtTitle.setText(dataModel.getUuid().toString());
+
         // Return the completed view to render on screen
         return convertView;
     }

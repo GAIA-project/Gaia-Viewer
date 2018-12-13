@@ -1,10 +1,9 @@
-package viewer.android.gaiaproject.eu.gaiaviewer;
+package viewer.android.gaiaproject.eu.gaiaviewer.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.chen0040.sbclient.SpringBootWebSocketClient;
@@ -29,9 +28,13 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import viewer.android.gaiaproject.eu.gaiaviewer.adapter.MyPagerAdapter;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.GroupDTO;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.WsDTO;
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
+import viewer.android.gaiaproject.eu.gaiaviewer.util.Communications;
 
 @EActivity(R.layout.activity_school)
 public class SchoolActivity extends AppCompatActivity {

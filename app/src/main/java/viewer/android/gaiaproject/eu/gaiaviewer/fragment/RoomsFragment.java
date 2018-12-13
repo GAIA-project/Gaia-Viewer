@@ -15,11 +15,11 @@ import java.util.Collection;
 import java.util.List;
 
 import viewer.android.gaiaproject.eu.gaiaviewer.R;
-import viewer.android.gaiaproject.eu.gaiaviewer.RoomsListAdapter;
-import viewer.android.gaiaproject.eu.gaiaviewer.SchoolActivity_;
-import viewer.android.gaiaproject.eu.gaiaviewer.SchoolModel;
+import viewer.android.gaiaproject.eu.gaiaviewer.adapter.RoomsListAdapter;
+import viewer.android.gaiaproject.eu.gaiaviewer.activity.SchoolActivity_;
+import viewer.android.gaiaproject.eu.gaiaviewer.model.SchoolModel;
 
-import static viewer.android.gaiaproject.eu.gaiaviewer.SchoolActivity.SCHOOL_EXTRA;
+import static viewer.android.gaiaproject.eu.gaiaviewer.activity.SchoolActivity.SCHOOL_EXTRA;
 
 @EFragment(R.layout.fragment_rooms)
 public class RoomsFragment extends Fragment {

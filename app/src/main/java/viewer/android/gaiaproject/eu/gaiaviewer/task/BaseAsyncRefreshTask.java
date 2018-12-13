@@ -2,7 +2,7 @@ package viewer.android.gaiaproject.eu.gaiaviewer.task;
 
 import android.content.ContextWrapper;
 import android.os.AsyncTask;
-import viewer.android.gaiaproject.eu.gaiaviewer.Communications;
+import viewer.android.gaiaproject.eu.gaiaviewer.util.Communications;
 
 public class BaseAsyncRefreshTask<T,A,F> extends AsyncTask<T, A, F> {
     protected static final String TAG = "AsyncRefreshTask";

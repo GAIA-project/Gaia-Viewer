@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 import viewer.android.gaiaproject.eu.gaiaviewer.R;
-import viewer.android.gaiaproject.eu.gaiaviewer.ResourceListAdapter;
+import viewer.android.gaiaproject.eu.gaiaviewer.adapter.ResourceListAdapter;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 
 @EFragment(R.layout.fragment_sensors)
