@@ -24,6 +24,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import viewer.android.gaiaproject.eu.gaiaviewer.BuildConfig;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAACheckTokenResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAAProfileResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAccessTokenResponse;
@@ -96,7 +97,7 @@ public class Communications {
 
     private boolean refreshToken(SwAccessTokenResponse token) {
         try {
-            URL url = new URL(SSO_URL + "oauth/token?refresh_token=" + token.getRefresh_token() + "&client_id=GamECARDataLogger&client_secret=a001c77f-db5e-4159-9364-9a2136063c12&grant_type=refresh_token");
+            URL url = new URL(SSO_URL + "oauth/token?refresh_token=" + token.getRefresh_token() + "&client_id=" + BuildConfig.GaiaViewerId + "&client_secret=" + BuildConfig.GaiaViewerSecret + "&grant_type=refresh_token");
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             if (urlConnection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
@@ -184,7 +185,7 @@ public class Communications {
             final HttpEntity httpEntity = new HttpEntity<>("");
             final SwAccessTokenResponse newToken = restClient.exchange(UriComponentsBuilder.
                     fromUriString(Constants.OATH2_TOKEN_URL2).
-                    buildAndExpand(username, password).toUriString(), HttpMethod.POST, httpEntity, SwAccessTokenResponse.class).getBody();
+                    buildAndExpand(username, password, BuildConfig.GaiaViewerId, BuildConfig.GaiaViewerSecret).toUriString(), HttpMethod.POST, httpEntity, SwAccessTokenResponse.class).getBody();
             if (newToken != null) {
                 return storeToken(newToken);
             }

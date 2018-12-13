@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def GAIA_VIEWER_ID = '"' + GaiaViewerId + '"' ?: '"Define your Sparks Client Id in your gradle properties"'
+def GAIA_VIEWER_SECRET = '"' + GaiaViewerSecret + '"' ?: '"Define your Sparks Client Secret in your gradle properties"'
+
 android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
@@ -17,6 +20,8 @@ android {
                 includeCompileClasspath true
             }
         }
+        buildConfigField "String", 'GaiaViewerId', GAIA_VIEWER_ID
+        buildConfigField "String", 'GaiaViewerSecret', GAIA_VIEWER_SECRET
     }
     buildTypes {
         release {
