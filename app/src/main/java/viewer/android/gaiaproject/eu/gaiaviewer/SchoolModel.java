@@ -14,7 +14,7 @@ import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.GroupDTO;
 @Getter
 @Setter
 @AllArgsConstructor
-class SchoolModel implements Serializable {
+public class SchoolModel implements Serializable {
     String name;
     UUID uuid;
     String path;

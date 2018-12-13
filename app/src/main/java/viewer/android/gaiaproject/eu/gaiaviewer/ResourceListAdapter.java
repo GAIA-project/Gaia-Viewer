@@ -91,8 +91,8 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
             rate = 1000000.0;
         }
 
-        if (SchoolActivity.latestValues != null && SchoolActivity.latestValues.containsKey(dataModel.getUuid())) {
-            double val = SchoolActivity.latestValues.get(dataModel.getUuid()).getLatest() / rate;
+        if (SchoolActivity.latestValues != null && SchoolActivity.latestValues.containsKey(dataModel.getSystemName())) {
+            double val = SchoolActivity.latestValues.get(dataModel.getSystemName()).getLatest() / rate;
             if (rate == 1) {
                 viewHolder.txtValue.setText(String.format("%.0f", val));
             } else {

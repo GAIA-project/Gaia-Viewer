@@ -1,6 +1,7 @@
 package viewer.android.gaiaproject.eu.gaiaviewer;
 
 import android.util.Log;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pixplicity.easyprefs.library.Prefs;
@@ -22,6 +23,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAACheckTokenResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAAProfileResponse;
 import viewer.android.gaiaproject.eu.gaiaviewer.aa.SwAccessTokenResponse;
@@ -29,6 +31,7 @@ import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.GroupDTO;
 import viewer.android.gaiaproject.eu.gaiaviewer.cargo.dto.ResourceDTO;
 
 import javax.net.ssl.HttpsURLConnection;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,6 +44,7 @@ import java.util.UUID;
 
 import static net.sparkworks.cargo.common.CargoRoutes.GROUP;
 import static net.sparkworks.cargo.common.CargoRoutes.GROUP_RESOURCES;
+import static net.sparkworks.cargo.common.CargoRoutes.GROUP_SUBGROUPS;
 import static net.sparkworks.cargo.common.CargoRoutes.PHENOMENON;
 import static net.sparkworks.cargo.common.CargoRoutes.RESOURCE_LATEST_BY_UUID;
 import static net.sparkworks.cargo.common.CargoRoutes.UNIT;
@@ -49,31 +53,31 @@ import static viewer.android.gaiaproject.eu.gaiaviewer.Constants.ACCOUNTS_PREF_N
 public class Communications {
     private static final String TAG = "Communications";
     private static final String BEARER = "Bearer ";
-    
+
     private static final String SSO_URL = "https://sso.sparkworks.net/aa/";
     private static final String SPARKS_URL = "https://api.sparkworks.net/v2";
     private static final String PROFILE_SSO_URL = SSO_URL + "profile";
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String AUTH_BEARER_PREFIX = "Bearer ";
-    
+
     private static final String GCDB_URL = "https://gcdb.sparkworks.net/";
-    
+
     private static final String APPLICATION_JSON_CT = "application/json";
-    
+
     private final ObjectMapper mapper;
     RestTemplate restClient;
-    
+
     public Communications() {
         this.mapper = new ObjectMapper();
         this.restClient = new RestTemplate();
     }
-    
+
     private MultiValueMap<String, String> makeAuthHeaders(SwAccessTokenResponse token) {
         MultiValueMap<String, String> headers = new HttpHeaders();
         headers.add(HttpHeaders.AUTHORIZATION, BEARER + token.getAccess_token());
         return headers;
     }
-    
+
     public SwAAProfileResponse getProfile() {
         final SwAccessTokenResponse token = getAccountToken();
         if (token != null) {
@@ -88,8 +92,8 @@ public class Communications {
         }
         return null;
     }
-    
-    
+
+
     private boolean refreshToken(SwAccessTokenResponse token) {
         try {
             URL url = new URL(SSO_URL + "oauth/token?refresh_token=" + token.getRefresh_token() + "&client_id=GamECARDataLogger&client_secret=a001c77f-db5e-4159-9364-9a2136063c12&grant_type=refresh_token");
@@ -114,7 +118,7 @@ public class Communications {
         }
         return false;
     }
-    
+
     private SwAccessTokenResponse storeToken(final SwAccessTokenResponse newToken) {
         try {
             Prefs.putString(ACCOUNTS_PREF_NAME, mapper.writeValueAsString(newToken));
@@ -125,7 +129,7 @@ public class Communications {
         Log.d("LOGINTOKEN", newToken.getAccess_token());
         return newToken;
     }
-    
+
     public SwAccessTokenResponse getAccountToken() {
         String tokenString = Prefs.getString(ACCOUNTS_PREF_NAME, null);
         Log.d("current token", tokenString);
@@ -138,11 +142,11 @@ public class Communications {
         }
         return null;
     }
-    
+
     public boolean checkToken() {
         return checkToken(getAccountToken());
     }
-    
+
     private boolean checkToken(final SwAccessTokenResponse token) {
         final MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
         if (token == null) {
@@ -173,7 +177,7 @@ public class Communications {
             return false;
         }
     }
-    
+
     public SwAccessTokenResponse login(final String username, final String password) {
         Log.i(TAG, "login");
         try {
@@ -189,23 +193,23 @@ public class Communications {
         }
         return null;
     }
-    
+
     public boolean clearToken() {
         Prefs.clear();
         return true;
     }
-    
-    
+
+
     public Collection<GroupDTO> getGroups() {
         HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
         ResponseEntity<Collection<GroupDTO>> response = restClient.
-                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL+ GROUP).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<GroupDTO>>() {
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + GROUP).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<GroupDTO>>() {
                 });
         if (!response.getStatusCode().is2xxSuccessful())
             throw new RestClientException(response.toString());
         return response.getBody();
     }
-    
+
     protected MultiValueMap<String, String> prepareHeaders(final String accessToken) {
         MultiValueMap<String, String> headers = new HttpHeaders();
         if (Objects.nonNull(accessToken)) {
@@ -218,7 +222,7 @@ public class Communications {
     public Collection<ResourceDTO> getResourcesOfGroup(UUID uuid) {
         HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
         ResponseEntity<Collection<ResourceDTO>> response = restClient.
-                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL+ GROUP_RESOURCES).buildAndExpand(uuid).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<ResourceDTO>>() {
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + GROUP_RESOURCES).buildAndExpand(uuid).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<ResourceDTO>>() {
                 });
         if (!response.getStatusCode().is2xxSuccessful())
             throw new RestClientException(response.toString());
@@ -249,6 +253,16 @@ public class Communications {
         HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
         ResponseEntity<LatestDTO> response = restClient.
                 exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + RESOURCE_LATEST_BY_UUID).buildAndExpand(uuid.toString()).toUriString(), HttpMethod.GET, httpEntity, LatestDTO.class);
+        if (!response.getStatusCode().is2xxSuccessful())
+            throw new RestClientException(response.toString());
+        return response.getBody();
+    }
+
+    public Collection<GroupDTO> listSubgroups(UUID uuid) {
+        HttpEntity httpEntity = new HttpEntity(prepareHeaders(getAccountToken().getAccess_token()));
+        ResponseEntity<Collection<GroupDTO>> response = restClient.
+                exchange(UriComponentsBuilder.fromUriString(SPARKS_URL + GROUP_SUBGROUPS).buildAndExpand(uuid, -1).toUriString(), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<Collection<GroupDTO>>() {
+                });
         if (!response.getStatusCode().is2xxSuccessful())
             throw new RestClientException(response.toString());
         return response.getBody();
