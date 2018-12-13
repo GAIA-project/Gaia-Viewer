@@ -33,5 +33,6 @@
     <string name="hardware_sensors">Hardware Sensors</string>
     <string name="rooms">Rooms</string>
     <string name="title">Title</string>
+    <string name="no_rooms_in_this_area">No Rooms in this area!</string>
 
 </resources>

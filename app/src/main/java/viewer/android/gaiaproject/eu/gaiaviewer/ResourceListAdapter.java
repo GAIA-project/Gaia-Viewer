@@ -25,6 +25,7 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
         TextView txtValue;
         TextView txtValueUnit;
         ProgressBar imgLoading;
+        ImageView phenomenonImg;
     }
 
     public ResourceListAdapter(List<ResourceDTO> data, Context context) {
@@ -70,6 +71,7 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
             viewHolder.txtValue = convertView.findViewById(R.id.value);
             viewHolder.txtValueUnit = convertView.findViewById(R.id.valueUnit);
             viewHolder.imgLoading = convertView.findViewById(R.id.loading);
+            viewHolder.phenomenonImg = convertView.findViewById(R.id.phenomenonImg);
 
             result = convertView;
 
@@ -83,7 +85,12 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
 
         viewHolder.txtType.setText(dataModel.getPhenomenonUuid().toString());
         if (SchoolActivity.phenomena != null && SchoolActivity.phenomena.containsKey(dataModel.getPhenomenonUuid())) {
-            viewHolder.txtType.setText(SchoolActivity.phenomena.get(dataModel.getPhenomenonUuid()));
+            final String phenomenon = SchoolActivity.phenomena.get(dataModel.getPhenomenonUuid());
+            if (phenomenon != null) {
+                viewHolder.txtType.setText(phenomenon);
+
+                viewHolder.phenomenonImg.setImageResource(getImage(phenomenon.toLowerCase()));
+            }
         }
         viewHolder.txtName.setText(dataModel.getUserFriendlyName());
         double rate = 1.0;
@@ -120,5 +127,29 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
         }
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    private int getImage(String phenomenon) {
+        if (phenomenon.contains("power")) {
+            return R.mipmap.power;
+        } else if (phenomenon.contains("temperature")) {
+            return R.mipmap.temperature;
+        } else if (phenomenon.contains("battery")) {
+            return R.mipmap.battery;
+        } else if (phenomenon.contains("current")) {
+            return R.mipmap.current;
+        } else if (phenomenon.contains("luminosity")) {
+            return R.mipmap.luminosity;
+        } else if (phenomenon.contains("methane")) {
+            return R.mipmap.methane;
+        } else if (phenomenon.contains("motion")) {
+            return R.mipmap.motion;
+        } else if (phenomenon.contains("noise")) {
+            return R.mipmap.noise;
+        } else if (phenomenon.contains("wind direction")) {
+            return R.mipmap.wind_direction;
+        } else {
+            return R.mipmap.sensor;
+        }
     }
 }

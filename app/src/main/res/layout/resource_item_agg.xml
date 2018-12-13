@@ -8,11 +8,14 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="10sp"
+        android:layout_marginEnd="10sp"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="50sp"
-            android:layout_height="50sp"
+            android:id="@+id/phenomenonImg"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
             android:src="@mipmap/ic_launcher" />
 
     </LinearLayout>
@@ -66,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@android:color/black"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/valueUnit"

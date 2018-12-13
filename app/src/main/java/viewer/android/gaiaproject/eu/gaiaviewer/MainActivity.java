@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         communications = new Communications();
 
         adapter = new SchoolListAdapter(schoolModelList, getApplicationContext());
+        adapter.clear();
         schoolList.setAdapter(adapter);
         schoolList.setOnItemClickListener((parent, view, position, id) -> {
             final SchoolModel school = (SchoolModel) parent.getAdapter().getItem(position);
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     @Background
     void getProfile() {
         final SwAAProfileResponse profile = communications.getProfile();
-        Log.i(TAG, profile.toString());
         updateWelcomeMessage(profile);
         final Collection<GroupDTO> groups = communications.getGroups();
         final Map<GroupDTO, Set<GroupDTO>> mainGroups = new HashMap<>();
@@ -81,23 +81,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         for (final GroupDTO groupDTO : mainGroups.keySet()) {
-            Log.i(TAG, "School:\t" + groupDTO.getName());
-            Log.i(TAG, "\tRooms:\t");
-            for (final GroupDTO room : mainGroups.get(groupDTO)) {
-                Log.i(TAG, "\t\t-" + room.getName() + "\t");
-            }
-        }
-        for (final GroupDTO groupDTO : mainGroups.keySet()) {
             schoolModelList.add(new SchoolModel(groupDTO.getName(), groupDTO.getUuid(), groupDTO.getPath()));
         }
-        updateSchoolList(schoolModelList);
+        for (SchoolModel schoolModel : schoolModelList) {
+            Log.i(TAG, "School:\t" + schoolModel.getName());
+        }
+        updateSchoolList();
     }
 
     @UiThread
-    void updateSchoolList(List<SchoolModel> schoolModelList) {
-        adapter.addAll(schoolModelList);
+    void updateSchoolList() {
         adapter.notifyDataSetChanged();
-        Log.i(TAG, "items:" + schoolList.getAdapter().getCount());
     }
 
     @UiThread

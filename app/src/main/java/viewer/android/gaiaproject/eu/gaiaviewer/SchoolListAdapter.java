@@ -55,14 +55,11 @@ public class SchoolListAdapter extends ArrayAdapter<SchoolModel> implements View
         final View result;
 
         if (convertView == null) {
-
             viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+            final LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.school_item, parent, false);
-            viewHolder.txtName = (TextView) convertView.findViewById(R.id.name);
-
+            viewHolder.txtName = convertView.findViewById(R.id.name);
             result=convertView;
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
