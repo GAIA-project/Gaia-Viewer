@@ -24,7 +24,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.BuildConfig;
+import eu.gaiaproject.android.companion.BuildConfig;
 import eu.gaiaproject.android.companion.aa.SwAACheckTokenResponse;
 import eu.gaiaproject.android.companion.aa.SwAAProfileResponse;
 import eu.gaiaproject.android.companion.aa.SwAccessTokenResponse;

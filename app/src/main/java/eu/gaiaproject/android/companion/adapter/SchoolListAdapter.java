@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.model.SchoolModel;
 
 public class SchoolListAdapter extends ArrayAdapter<SchoolModel> implements View.OnClickListener{

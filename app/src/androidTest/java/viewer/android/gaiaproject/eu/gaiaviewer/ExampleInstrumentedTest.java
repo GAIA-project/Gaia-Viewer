@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("viewer.android.gaiaproject.eu.gaiaviewer", appContext.getPackageName());
+        assertEquals("eu.gaiaproject.android.companion, appContext.getPackageName());
     }
 }

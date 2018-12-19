@@ -20,7 +20,7 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.aa.SwAccessTokenResponse;
 import eu.gaiaproject.android.companion.task.AsyncLoginTask;
 import eu.gaiaproject.android.companion.util.Communications;

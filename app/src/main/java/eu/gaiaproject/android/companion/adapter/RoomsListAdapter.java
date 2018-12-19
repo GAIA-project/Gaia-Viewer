@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.model.SchoolModel;
 
 public class RoomsListAdapter extends ArrayAdapter<SchoolModel> implements View.OnClickListener {
@@ -70,6 +70,7 @@ public class RoomsListAdapter extends ArrayAdapter<SchoolModel> implements View.
         int lastPosition = position;
         viewHolder.txtName.setText(dataModel.getName());
         viewHolder.txtTitle.setText(dataModel.getUuid().toString());
+        viewHolder.txtTitle.setText("");
 
         // Return the completed view to render on screen
         return convertView;

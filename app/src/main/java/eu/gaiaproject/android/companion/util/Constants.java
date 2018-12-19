@@ -4,7 +4,7 @@ public class Constants {
 
     public static final int SERVICE_MANAGE_NOTIFICATION_ID = 643945;
 
-    public static final String RESYNC_DATA_ACTION = "viewer.android.gaiaproject.eu.gaiaviewer.SYNC";
+    public static final String RESYNC_DATA_ACTION = "eu.gaiaproject.android.companion.SYNC";
 
     static final String OATH2_TOKEN_URL2 = "https://sso.sparkworks.net/aa/oauth/token?username={username}&password={password}&client_id={client_id}&client_secret={client_secret}&grant_type=password"; // since Sep 08
     static final String OATH2_CHECK_TOKEN_URL = "https://sso.sparkworks.net/aa/oauth/check_token"; // since Sep 08

@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.adapter.MyPagerAdapter;
 import eu.gaiaproject.android.companion.cargo.dto.GroupDTO;
 import eu.gaiaproject.android.companion.cargo.dto.ResourceDTO;

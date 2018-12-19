@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.adapter.RoomsListAdapter;
 import eu.gaiaproject.android.companion.activity.SchoolActivity_;
 import eu.gaiaproject.android.companion.model.SchoolModel;

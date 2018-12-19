@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.activity.SchoolActivity;
 import eu.gaiaproject.android.companion.model.SchoolModel;
 import eu.gaiaproject.android.companion.cargo.dto.ResourceDTO;
@@ -126,6 +126,8 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
 
             if (!unit.equals("Raw Value")) {
                 viewHolder.txtValueUnit.setText(unit);
+            } else {
+                viewHolder.txtValueUnit.setText("");
             }
         }
         // Return the completed view to render on screen

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import viewer.android.gaiaproject.eu.gaiaviewer.R;
+import eu.gaiaproject.android.companion.R;
 import eu.gaiaproject.android.companion.aa.SwAAProfileResponse;
 import eu.gaiaproject.android.companion.adapter.SchoolListAdapter;
 import eu.gaiaproject.android.companion.cargo.dto.GroupDTO;
