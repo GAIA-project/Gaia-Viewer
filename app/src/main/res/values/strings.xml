@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GaiaViewer</string>
+    <string name="app_name">GAIA Companion</string>
     <string name="main_greeting">Hello %s!</string>
     <!--validation error messages-->
     <string name="err_validation_username_required">Username is required</string>

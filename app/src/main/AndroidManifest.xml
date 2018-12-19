@@ -20,7 +20,7 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
-            android:name=".App"
+            android:name="eu.gaiaproject.android.companion.App"
             android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,7 +29,7 @@
 
         <!-- For SSO AUTH A' part -->
         <activity
-                android:name=".activity.LoginActivity_"
+                android:name="eu.gaiaproject.android.companion.activity.LoginActivity_"
                 android:exported="true"
                 android:screenOrientation="portrait"
                 android:label="@string/app_name">
@@ -39,9 +39,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.MainActivity_">
+        <activity android:name="eu.gaiaproject.android.companion.activity.MainActivity_">
         </activity>
-        <activity android:name=".activity.SchoolActivity_">
+        <activity android:name="eu.gaiaproject.android.companion.activity.SchoolActivity_">
         </activity>
 
         <!--<provider-->
