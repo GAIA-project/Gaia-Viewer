@@ -4,13 +4,13 @@ def GAIA_VIEWER_ID = '"' + GaiaViewerId + '"' ?: '"Define your Sparks Client Id 
 def GAIA_VIEWER_SECRET = '"' + GaiaViewerSecret + '"' ?: '"Define your Sparks Client Secret in your gradle properties"'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "eu.gaiaproject.android.companion"
         minSdkVersion 24
         targetSdkVersion 27
-        versionCode 4
+        versionCode 5
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
