@@ -4,8 +4,8 @@ def GAIA_VIEWER_ID = '"' + GaiaViewerId + '"' ?: '"Define your Sparks Client Id 
 def GAIA_VIEWER_SECRET = '"' + GaiaViewerSecret + '"' ?: '"Define your Sparks Client Secret in your gradle properties"'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "eu.gaiaproject.android.companion"
         minSdkVersion 24
@@ -74,7 +74,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     //multidex
-    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.annotation:annotation:1.0.1'
 
     annotationProcessor "org.androidannotations:androidannotations:4.5.2"
@@ -86,9 +86,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.9.7'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.7'
     implementation 'org.springframework.android:spring-android-rest-template:2.0.0.M3'
-    compileOnly 'org.projectlombok:lombok:1.16.18'
+    compileOnly 'org.projectlombok:lombok:1.18.4'
 
-    implementation 'com.squareup.okhttp3:okhttp:3.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.alibaba:fastjson:1.1.53.android'
 
     // sparks

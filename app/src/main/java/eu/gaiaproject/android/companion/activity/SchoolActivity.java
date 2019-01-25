@@ -129,7 +129,11 @@ public class SchoolActivity extends AppCompatActivity {
         updateHardwareResources(hardwareResources);
 
         for (final ResourceDTO groupResource : groupResources) {
-            latestValues.put(groupResource.getSystemName(), communications.getResourceLatestValue(groupResource.getUuid()));
+            try {
+                latestValues.put(groupResource.getSystemName(), communications.getResourceLatestValue(groupResource.getUuid()));
+            } catch (Exception e) {
+
+            }
             updateValues();
         }
 

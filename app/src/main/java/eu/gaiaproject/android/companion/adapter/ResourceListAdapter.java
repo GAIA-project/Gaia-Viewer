@@ -1,6 +1,7 @@
 package eu.gaiaproject.android.companion.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import org.androidannotations.annotations.ResId;
 
 import java.util.List;
 
@@ -17,6 +20,8 @@ import eu.gaiaproject.android.companion.model.SchoolModel;
 import eu.gaiaproject.android.companion.cargo.dto.ResourceDTO;
 
 public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements View.OnClickListener {
+
+    private static final String TAG = "ResourceListAdapter";
 
     private List<ResourceDTO> dataSet;
     Context mContext;
@@ -90,7 +95,13 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
         if (SchoolActivity.phenomena != null && SchoolActivity.phenomena.containsKey(dataModel.getPhenomenonUuid())) {
             final String phenomenon = SchoolActivity.phenomena.get(dataModel.getPhenomenonUuid());
             if (phenomenon != null) {
-                viewHolder.txtType.setText(phenomenon);
+
+                int resId = getContext().getResources().getIdentifier(phenomenon.toLowerCase().replaceAll(" ","_"), "string", getContext().getPackageName());
+                if (resId == 0) {
+                    viewHolder.txtType.setText(phenomenon);
+                } else {
+                    viewHolder.txtType.setText(getContext().getString(resId));
+                }
 
                 viewHolder.phenomenonImg.setImageResource(getImage(phenomenon.toLowerCase()));
             }
