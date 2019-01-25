@@ -1,5 +1,6 @@
+<?xml version="1.0"?>
 <resources>
-    <string name="app_name">GAIA Companion</string>
+    <string name="app_name" translatable="false">GAIA Companion</string>
     <string name="main_greeting">Hello %s!</string>
     <!--validation error messages-->
     <string name="err_validation_username_required">Username is required</string>
@@ -11,9 +12,6 @@
     <string name="err_validation_password_not_match">Passwords do not match</string>
     <string name="err_validation_password_not_strong">Weak Password</string>
     <string name="err_validation_repeat_password_required">Repeat Password is required</string>
-    <string name="err_validation_gear_number" formatted="false">Gear %d - Ratio is not a valid number</string>
-    <string name="err_validation_gear_required" formatted="false">Gear %d - Ratio is required</string>
-    <string name="err_validation_tyreSize_required">Tyre diameter is required</string>
     <!-- Strings related to sign-in -->
     <string name="login">Connect</string>
     <string name="prompt_login">Username</string>
@@ -36,5 +34,4 @@
     <string name="title">Title</string>
     <string name="no_rooms_in_this_area">No Rooms in this area!</string>
     <string name="logout">Logout</string>
-
 </resources>
