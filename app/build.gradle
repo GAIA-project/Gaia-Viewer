@@ -10,7 +10,7 @@ android {
         applicationId "eu.gaiaproject.android.companion"
         minSdkVersion 24
         targetSdkVersion 28
-        versionCode 5
+        versionCode 7
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -90,6 +90,8 @@ dependencies {
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.alibaba:fastjson:1.1.53.android'
+    implementation 'com.splunk.mint:mint:5.0.0'
+
 
     // sparks
     implementation('net.sparkworks.cargo:cargo-common:1.0.0-SNAPSHOT') {

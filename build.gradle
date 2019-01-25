@@ -23,6 +23,7 @@ allprojects {
         mavenLocal()
         mavenCentral()
         maven { url 'http://artifactory.sparkworks.net/nexus/repository/maven-public/' }
+        maven { url "https://mint.splunk.com/gradle/" }
     }
 }
 
