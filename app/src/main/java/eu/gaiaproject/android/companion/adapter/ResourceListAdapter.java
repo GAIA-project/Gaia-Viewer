@@ -97,7 +97,7 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
         }
         viewHolder.txtName.setText(dataModel.getUserFriendlyName());
         double rate = 1.0;
-        if (dataModel.getUnitUuid().toString().equals("10862083-89df-44f9-8e2b-9fbc58c9f8ce")) {
+        if (dataModel.getUnitUuid() != null && dataModel.getUnitUuid().toString().equals("10862083-89df-44f9-8e2b-9fbc58c9f8ce")) {
             rate = 1000000.0;
         }
 
