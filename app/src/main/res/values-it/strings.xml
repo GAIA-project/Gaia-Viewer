@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <resources>
+    <string name="main_greeting">"Ciao %s! "</string>
     <!--validation error messages-->
+    <string name="err_validation_username_required">"Username è obbligatorio "</string>
+    <string name="err_validation_password_required">"Password è obbligatorio "</string>
+    <string name="err_validation_email_not_valid">"Email non valida "</string>
     <!-- Strings related to sign-in -->
 </resources>
