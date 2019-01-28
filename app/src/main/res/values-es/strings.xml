@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <resources>
+    <string name="main_greeting">Hola %s!</string>
     <!--validation error messages-->
     <!-- Strings related to sign-in -->
 </resources>

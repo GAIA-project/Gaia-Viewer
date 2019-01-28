@@ -1,31 +1,38 @@
 package eu.gaiaproject.android.companion.adapter;
 
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.Collection;
 
-import eu.gaiaproject.android.companion.model.SchoolModel;
 import eu.gaiaproject.android.companion.cargo.dto.ResourceDTO;
 import eu.gaiaproject.android.companion.fragment.RoomsFragment;
 import eu.gaiaproject.android.companion.fragment.RoomsFragment_;
-import eu.gaiaproject.android.companion.fragment.SensorsFragment;
 import eu.gaiaproject.android.companion.fragment.SensorsFragment_;
+import eu.gaiaproject.android.companion.model.SchoolModel;
 
 public class MyPagerAdapter extends FragmentStatePagerAdapter {
     int mNumOfTabs;
     private RoomsFragment tab1;
-    private SensorsFragment tab2;
-    private SensorsFragment tab3;
+    private SensorsFragment_ tab2;
+    private SensorsFragment_ tab3;
 
     public MyPagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
         tab1 = new RoomsFragment_();
         tab2 = new SensorsFragment_();
+        Bundle bE = new Bundle();
+        bE.putString("title","aggregate");
+        tab2.setArguments(bE);
         tab3 = new SensorsFragment_();
+        Bundle bEh = new Bundle();
+        bEh.putString("title","hardware");
+        tab3.setArguments(bEh);
+
     }
 
     @Override

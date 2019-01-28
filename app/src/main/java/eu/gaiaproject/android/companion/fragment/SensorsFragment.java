@@ -1,6 +1,7 @@
 package eu.gaiaproject.android.companion.fragment;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.widget.ListView;
 
 import org.androidannotations.annotations.AfterViews;
@@ -18,6 +19,7 @@ import eu.gaiaproject.android.companion.cargo.dto.ResourceDTO;
 @EFragment(R.layout.fragment_sensors)
 public class SensorsFragment extends Fragment {
 
+    private static final String TAG = "SensorsFragment";
     @ViewById
     ListView aggResourceList;
 
@@ -26,14 +28,17 @@ public class SensorsFragment extends Fragment {
 
     @AfterViews
     void init() {
+        Log.e(TAG, "SensorsFragment afterViews " + getArguments().getString("title"));
         aggResourceAdapter = new ResourceListAdapter(aggResourceModelList, getContext());
         aggResourceList.setAdapter(aggResourceAdapter);
     }
 
     public void updateResources(final Collection<ResourceDTO> resources) {
+        aggResourceModelList.addAll(resources);
         if (aggResourceAdapter != null) {
-            aggResourceAdapter.addAll(resources);
             aggResourceAdapter.notifyDataSetChanged();
+        } else {
+            Log.e(TAG, "updateResources: aggResourceAdapter == null");
         }
         //aggResourceLayout.setVisibility(resources.isEmpty() ? View.GONE : View.VISIBLE);
     }

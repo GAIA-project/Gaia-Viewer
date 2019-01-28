@@ -124,6 +124,12 @@ public class SchoolActivity extends AppCompatActivity {
                 resourceDTO.getSystemName().startsWith("site-")).collect(Collectors.toList());
         final List<ResourceDTO> hardwareResources = groupResources.stream().filter(resourceDTO ->
                 !resourceDTO.getSystemName().startsWith("site-")).collect(Collectors.toList());
+        for (ResourceDTO hardwareResource : hardwareResources) {
+            Log.i(TAG, "group:" + hardwareResource);
+        }
+        for (ResourceDTO hardwareResource : hardwareResources) {
+            Log.i(TAG, "hard:" + hardwareResource);
+        }
 
         updateAggResources(aggregateResources);
         updateHardwareResources(hardwareResources);
