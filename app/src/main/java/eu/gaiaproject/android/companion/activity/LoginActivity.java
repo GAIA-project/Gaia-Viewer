@@ -35,11 +35,11 @@ import static eu.gaiaproject.android.companion.util.Constants.USER;
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends Activity {
     private static final String TAG = "LoginActivity";
-    
+
     private final String SPARKS_REGISTER_PAGE = "https://sso.sparkworks.net/aa/gc/registration";
     private static final String[] PERMISSIONS = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION};
     private static final int PERMISSION_REQUEST = 1337;
-    
+
     @ViewById
     LinearLayout progressLayout;
     @ViewById
@@ -51,7 +51,7 @@ public class LoginActivity extends Activity {
     @ViewById
     EditText loginPassword;
     //private android.os.Handler handler = new android.os.Handler();
-    
+
     private View.OnClickListener loginCreateAccountListener = v -> {
         //            final Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity_.class);
         //            startActivity(registerIntent);
@@ -61,7 +61,7 @@ public class LoginActivity extends Activity {
         startActivity(registerIntent);
         finish();
     };
-    
+
     @AfterViews
     void afterViews() {
         Log.i(TAG, "afterViews");
@@ -71,7 +71,18 @@ public class LoginActivity extends Activity {
             checkLogin();
         }
     }
-    
+
+    @Click
+    void loginGaiaChallengeLink() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://gaia-challenge.com/"));
+        startActivity(browserIntent);
+    }
+    @Click
+    void loginBMALink() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bms.gaia-project.eu/"));
+        startActivity(browserIntent);
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         boolean granted = true;
@@ -85,12 +96,12 @@ public class LoginActivity extends Activity {
                 }
                 break;
         }
-        
+
         if (granted) {
             checkLogin();
         }
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.i(TAG, "onActivityResult: " + requestCode);
@@ -99,7 +110,7 @@ public class LoginActivity extends Activity {
                 checkLogin();
         }
     }
-    
+
     private void checkLogin() {
         Log.i(TAG, "checkLogin");
         if (ServiceUtils.isNetworkAvailable(getApplicationContext())) {
@@ -120,12 +131,12 @@ public class LoginActivity extends Activity {
             }
         }
     }
-    
+
     private boolean isValidUserCredentials() {
         Log.i(TAG, "isValidUserCredentials");
         boolean isUsernameValid;
         boolean isPasswordValid;
-        
+
         final String username = loginUsername.getText() == null ? null : loginUsername.getText().toString();
         isUsernameValid = username != null;
         if (isUsernameValid) {
@@ -134,7 +145,7 @@ public class LoginActivity extends Activity {
             loginUsername.setError(getString(R.string.err_validation_username_required));
             loginUsername.requestFocus();
         }
-        
+
         final String password = loginPassword.getText() == null ? null : loginPassword.getText().toString();
         isPasswordValid = password != null;
         if (isPasswordValid) {
@@ -145,10 +156,10 @@ public class LoginActivity extends Activity {
                 loginPassword.requestFocus();
             }
         }
-        
+
         return isUsernameValid && isPasswordValid;
     }
-    
+
     @Click
     void btnLogin() {
         if (!ServiceUtils.isNetworkAvailable(getApplicationContext())) {
@@ -157,7 +168,7 @@ public class LoginActivity extends Activity {
             doLogin(loginUsername.getText().toString(), loginPassword.getText().toString());
         }
     }
-    
+
     void doLogin(String username, String password) {
         new Thread(() -> {
             showProgress();
@@ -177,7 +188,7 @@ public class LoginActivity extends Activity {
             }
         }).start();
     }
-    
+
     void loadMain() {
         runOnUiThread(() -> {
             final Intent mainIntent = new Intent(LoginActivity.this, MainActivity_.class);
@@ -185,7 +196,7 @@ public class LoginActivity extends Activity {
             finish();
         });
     }
-    
+
     void showProgress() {
         runOnUiThread(() -> {
             progressLayout.setVisibility(View.VISIBLE);
@@ -193,7 +204,7 @@ public class LoginActivity extends Activity {
             registrationTermsLayout.setVisibility(View.GONE);
         });
     }
-    
+
     void hideProgress() {
         runOnUiThread(() -> {
             progressLayout.setVisibility(View.GONE);
@@ -201,7 +212,7 @@ public class LoginActivity extends Activity {
             registrationTermsLayout.setVisibility(View.VISIBLE);
         });
     }
-    
+
     @Override
     public void onBackPressed() {
         // disable going back to the MainActivity

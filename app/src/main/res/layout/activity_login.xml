@@ -4,8 +4,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="#313a42"
+        android:layout_gravity="top"
+        android:background="#93ba2c"
         android:orientation="vertical">
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,18 +16,30 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:paddingLeft="24dp"
-                android:paddingTop="56dp"
-                android:paddingRight="24dp">
+                android:layout_gravity="top"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#313a42"
+                    android:orientation="vertical"
+                    android:paddingTop="24dp"
+                    android:paddingBottom="24dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/logo" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="72dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="24dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/splashscreen" />
 
                 <LinearLayout
                     android:id="@+id/progressLayout"
@@ -45,6 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
                     android:visibility="gone">
 
                     <TextView
@@ -55,20 +69,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/prompt_login"
-                        android:textColor="@color/textColorLight" />
+                        android:textColor="@color/colorWhite" />
 
                     <EditText
                         android:id="@+id/loginUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:nextFocusDown="@+id/loginPassword"
-                        android:textColor="@color/textColorLight" />
+                        android:textColor="@color/colorWhite" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/prompt_password"
-                        android:textColor="@color/textColorLight" />
+                        android:textColor="@color/colorWhite" />
 
                     <EditText
                         android:id="@+id/loginPassword"
@@ -76,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
                         android:nextFocusUp="@+id/loginUsername"
-                        android:textColor="@color/textColorLight" />
+                        android:textColor="@color/colorWhite" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -87,7 +101,8 @@
                         android:gravity="start"
                         android:text="@string/action_forgot_password"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/textColorLight" />
+                        android:textColor="@color/colorWhite"
+                        android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btnLogin"
@@ -101,7 +116,40 @@
                     android:id="@+id/registrationTermsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/form_input_horizontal_margin"
+                    android:paddingEnd="@dimen/form_input_horizontal_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_input_vertical_margin"
+                        android:gravity="start"
+                        android:text="Links"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/colorWhite"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/loginGaiaChallengeLink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="12dp"
+                            android:text="Gaia Challenge" />
+
+                        <Button
+                            android:id="@+id/loginBMALink"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="12dp"
+                            android:text="BMA" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/loginCreateAccount"
@@ -137,5 +185,6 @@
 
             </LinearLayout>
         </ScrollView>
+
     </LinearLayout>
 </layout>
