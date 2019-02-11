@@ -54,7 +54,7 @@ public class SchoolActivity extends AppCompatActivity {
     @AfterViews
     void init() {
         final TabLayout tabLayout = findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.rooms));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.rooms).setIcon(R.mipmap.room));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.aggregated_sensors));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.hardware_sensors));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -83,7 +83,6 @@ public class SchoolActivity extends AppCompatActivity {
         school = (SchoolModel) getIntent().getExtras().get(SCHOOL_EXTRA);
         Log.i(TAG, "SchoolExtra:" + getIntent().hasExtra(SCHOOL_EXTRA));
         setTitle(school.getName());
-
         initializeData();
     }
 

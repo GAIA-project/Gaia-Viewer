@@ -91,19 +91,23 @@ public class ResourceListAdapter extends ArrayAdapter<ResourceDTO> implements Vi
 
         lastPosition = position;
 
-        viewHolder.txtType.setText(dataModel.getPhenomenonUuid().toString());
-        if (SchoolActivity.phenomena != null && SchoolActivity.phenomena.containsKey(dataModel.getPhenomenonUuid())) {
-            final String phenomenon = SchoolActivity.phenomena.get(dataModel.getPhenomenonUuid());
-            if (phenomenon != null) {
+        if (dataModel == null || dataModel.getPhenomenonUuid() == null) {
+            viewHolder.txtType.setText("");
+        } else {
+            viewHolder.txtType.setText(dataModel.getPhenomenonUuid().toString());
+            if (SchoolActivity.phenomena != null && SchoolActivity.phenomena.containsKey(dataModel.getPhenomenonUuid())) {
+                final String phenomenon = SchoolActivity.phenomena.get(dataModel.getPhenomenonUuid());
+                if (phenomenon != null) {
 
-                int resId = getContext().getResources().getIdentifier(phenomenon.toLowerCase().replaceAll(" ","_"), "string", getContext().getPackageName());
-                if (resId == 0) {
-                    viewHolder.txtType.setText(phenomenon);
-                } else {
-                    viewHolder.txtType.setText(getContext().getString(resId));
+                    int resId = getContext().getResources().getIdentifier(phenomenon.toLowerCase().replaceAll(" ", "_"), "string", getContext().getPackageName());
+                    if (resId == 0) {
+                        viewHolder.txtType.setText(phenomenon);
+                    } else {
+                        viewHolder.txtType.setText(getContext().getString(resId));
+                    }
+
+                    viewHolder.phenomenonImg.setImageResource(getImage(phenomenon.toLowerCase()));
                 }
-
-                viewHolder.phenomenonImg.setImageResource(getImage(phenomenon.toLowerCase()));
             }
         }
         viewHolder.txtName.setText(dataModel.getUserFriendlyName());
